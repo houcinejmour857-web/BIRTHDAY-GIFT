@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For You, My Love ❤️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 160, 190, .25), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(190, 130, 255, .2), transparent 30%),
+        linear-gradient(135deg, #160b18, #2b1025, #170b20);
+    }
+
+    /* ---------------- FLOATING HEARTS ---------------- */
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      color: rgba(255, 150, 190, .65);
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 120, 170, .5));
+    }
+
+    .heart:nth-child(1) { left: 8%;  animation-duration: 9s;  font-size: 18px; }
+    .heart:nth-child(2) { left: 22%; animation-duration: 13s; font-size: 25px; }
+    .heart:nth-child(3) { left: 37%; animation-duration: 10s; font-size: 15px; }
+    .heart:nth-child(4) { left: 52%; animation-duration: 14s; font-size: 22px; }
+    .heart:nth-child(5) { left: 67%; animation-duration: 11s; font-size: 18px; }
+    .heart:nth-child(6) { left: 81%; animation-duration: 15s; font-size: 27px; }
+    .heart:nth-child(7) { left: 92%; animation-duration: 10s; font-size: 16px; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .small-text {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #f6b3ca;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px, 12vw, 130px);
+      line-height: .85;
+      font-weight: 500;
+
+      background: linear-gradient(
+        120deg,
+        #fff,
+        #ffb6ce,
+        #fff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: titleAppear 2s ease;
+    }
+
+    .hero h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(25px, 5vw, 45px);
+      font-weight: 400;
+      color: #ffd7e4;
+      margin-top: 25px;
+      animation: fadeIn 3s ease;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin-top: 25px;
+      color: #d8bcc9;
+      font-size: 15px;
+      line-height: 1.9;
+      animation: fadeIn 3.5s ease;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 35px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #b995a5;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes titleAppear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      50% { transform: translateY(8px); }
+    }
+
+    /* ---------------- SECTIONS ---------------- */
+
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .section-label {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #e997b5;
+      font-size: 11px;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 7vw, 65px);
+      font-weight: 500;
+      color: #ffe4ed;
+      margin-bottom: 45px;
+    }
+
+    /* ---------------- LETTER ---------------- */
+
+    .letter {
+      padding: clamp(30px, 7vw, 65px);
+      border-radius: 30px;
+
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(255, 190, 215, .15);
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .letter p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 3vw, 25px);
+      line-height: 1.8;
+      color: #f4dce6;
+      margin-bottom: 25px;
+    }
+
+    .letter .opening {
+      font-size: 32px;
+      color: #ffb3ca;
+    }
+
+    .highlight {
+      color: #ffb0ca;
+    }
+
+    .signature {
+      margin-top: 45px;
+      text-align: right;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      color: #ffbdd2;
+    }
+
+    /* ---------------- AGE ---------------- */
+
+    .age-card {
+      text-align: center;
+      padding: 65px 30px;
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,150,190,.12),
+          rgba(150,100,190,.08)
+        );
+
+      border: 1px solid rgba(255,200,220,.14);
+    }
+
+    .age-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 150px;
+      line-height: .8;
+
+      background: linear-gradient(135deg, #fff, #ff9fbe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .age-text {
+      margin-top: 30px;
+      color: #d8b5c5;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ---------------- REASONS ---------------- */
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .reason {
+      padding: 28px;
+      border-radius: 20px;
+
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,190,215,.1);
+
+      transition: .4s ease;
+    }
+
+    .reason:hover {
+      transform: translateY(-7px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,180,205,.25);
+    }
+
+    .reason-number {
+      color: #df789d;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .reason h3 {
+      font-family: "Cormorant Garamond", serif;
+      color: #ffdce8;
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .reason p {
+      color: #cdb2bf;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* ---------------- FINAL ---------------- */
+
+    .final {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .final-box {
+      max-width: 750px;
+    }
+
+    .final-heart {
+      font-size: 70px;
+      display: block;
+      margin-bottom: 30px;
+
+      animation: heartbeat 1.7s infinite;
+      filter: drop-shadow(0 0 20px rgba(255,120,170,.7));
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+    }
+
+    .final h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(45px, 8vw, 75px);
+      font-weight: 500;
+      color: #ffe5ed;
+    }
+
+    .final p {
+      margin-top: 25px;
+      color: #d8bac7;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .forever {
+      margin-top: 35px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      color: #ffabc5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #795c69;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLOATING HEARTS -->
+
+  <div class="hearts">
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+  </div>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="small-text">
+      A little something made just for you
+    </div>
+
+    <h1>Happy 18th</h1>
+
+    <h2>to the girl who makes my world a little brighter.</h2>
+
+    <p>
+      Some people deserve a simple "happy birthday."
+
+      You deserve a whole page.
+    </p>
+
+    <div class="scroll">
+      ↓ &nbsp; keep scrolling, birthday girl &nbsp; ↓
+    </div>
+
+  </header>
+
+
+  <!-- LETTER -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        From my heart
+      </div>
+
+      <h2 class="section-title">
+        A letter for you
+      </h2>
+
+      <div class="letter">
+
+        <p class="opening">
+          My love,
+        </p>
+
+        <p>
+          Today isn't just another birthday.
+          Today is the day the world gets to celebrate
+          <span class="highlight">you</span> —
+          the person who somehow managed to become such
+          an important part of my life.
+        </p>
+
+        <p>
+          I honestly don't know how to fit everything I feel
+          into a few paragraphs. There are so many little things
+          about you that I could talk about forever.
+          The way you laugh. The way you talk about the things
+          you love. The little moments that probably mean
+          nothing to anyone else but somehow mean everything to me.
+        </p>
+
+        <p>
+          You have this beautiful way of making ordinary days
+          feel special. A conversation with you can turn a boring
+          day into one I'll remember. And sometimes I catch myself
+          smiling just because I remembered something you said.
+        </p>
+
+        <p>
+          I hope you know that you are appreciated.
+          Not just today because it's your birthday,
+          but on all the random ordinary days too.
+        </p>
+
+        <p>
+          Now you're stepping into eighteen.
+          A whole new chapter is waiting for you,
+          and I hope it's filled with everything your heart
+          has been wishing for.
+        </p>
+
+        <p>
+          I hope you chase your dreams without being afraid
+          of how big they are. I hope you laugh until your
+          stomach hurts, discover places you've never seen,
+          meet people who appreciate you, and make memories
+          that you'll still smile about years from now.
+        </p>
+
+        <p>
+          And selfishly...
+          I hope I get to be there for some of those memories.
+        </p>
+
+        <p>
+          Thank you for being you.      
+          Thank you for every laugh, every conversation,
+          every little moment, and every memory we've created.and every spicy moment 😏.
+        </p>
+
+        <p>
+          If I could give you one thing for your birthday,
+          it wouldn't be something wrapped in a box.
+          I'd give you the ability to see yourself through
+          the eyes of everyone who cares about you —
+          because then you'd understand just how special you are.
+        </p>
+
+        <p>
+          <span class="highlight">
+            Happy 18th birthday, beautiful.
+          </span>
+        </p>
+
+        <p>
+          Here's to you, to this new chapter,
+          and to all the beautiful moments still waiting
+          somewhere ahead of us.
+        </p>
+
+        <div class="signature">
+          Always cheering for you,<br>
+          <span>Gabrielle</span> ❤️
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AGE -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        A new chapter
+      </div>
+
+      <h2 class="section-title">
+        Eighteen looks good on you
+      </h2>
+
+      <div class="age-card">
+
+        <div class="age-number">
+          18
+        </div>
+
+        <div class="age-text">
+          eighteen years of being wonderfully you
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 18 REASONS -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        Just a few of many
+      </div>
+
+      <h2 class="section-title">
+        18 little reasons why i love u
+      </h2>
+
+      <div class="reasons">
+
+        <div class="reason">
+          <span class="reason-number">01</span>
+          <h3>Your smile</h3>
+          <p>It has a way of making even an ordinary moment feel special.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">02</span>
+          <h3>Your laugh</h3>
+          <p>One of those sounds that is impossible not to smile at.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">03</span>
+          <h3>Your kindness</h3>
+          <p>You have a heart that deserves to be appreciated.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">04</span>
+          <h3>Your personality</h3>
+          <p>You make being around you feel easy and comfortable.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">05</span>
+          <h3>Your little habits</h3>
+          <p>Even the tiny things you do have somehow become memorable.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">06</span>
+          <h3>Your dreams</h3>
+          <p>I love seeing you get excited about the things you care about.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">07</span>
+          <h3>Your strength</h3>
+          <p>You are capable of more than you sometimes realize.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">08</span>
+          <h3>Your honesty</h3>
+          <p>You make conversations feel real and meaningful.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">09</span>
+          <h3>Your energy</h3>
+          <p>You bring something into a room that is uniquely yours.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">10</span>
+          <h3>Your little jokes</h3>
+          <p>Especially the ones that make absolutely no sense to anyone else.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">11</span>
+          <h3>Your confidence</h3>
+          <p>There's something beautiful about watching you be yourself.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">12</span>
+          <h3>Your imagination</h3>
+          <p>You see the world in your own wonderfully unique way.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">13</span>
+          <h3>Your patience</h3>
+          <p>It's one of those qualities that makes people feel safe around you.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">14</span>
+          <h3>Your voice</h3>
+          <p>There are conversations with you that I could listen to forever.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">15</span>
+          <h3>Your ambition</h3>
+          <p>I hope you never stop believing in what you're capable of.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">16</span>
+          <h3>Your heart</h3>
+          <p>It's one of the most beautiful things about you.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">17</span>
+          <h3>Your memories</h3>
+          <p>Some of my favorite moments are simply moments I've shared with you.</p>
+        </div>
+
+        <div class="reason">
+          <span class="reason-number">18</span>
+          <h3>Simply you</h3>
+          <p>Because you don't need to be anyone else to be worth celebrating.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="final-box">
+
+      <span class="final-heart">♥</span>
+
+      <h2>
+        Happy birthday,<br>
+        my favorite person.
+      </h2>
+
+      <p>
+        Eighteen chapters brought you here.
+        I hope the next ones are even more beautiful.
+        Whatever comes next, I hope you never forget
+        how loved, appreciated, and wonderful you are.
+      </p>
+
+      <div class="forever">
+        Here's to 18. 🥂<br>
+        And to all the memories still to come.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    Made with a ridiculous amount of love ♥
+  </footer>
+
+</body>
+</html>
